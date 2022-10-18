@@ -1,0 +1,279 @@
+:root{
+    --theme-color:rgb(36, 36, 36);
+    --text-color: #333;
+    --mobile-nav-color: rgba(55,55, 66, .85);
+    --heading-font: 'Montserrat', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+/* Typography */
+
+html{
+    font-size: 1.25em;
+    line-height: 1.4;
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+h1{
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: normal;
+}
+
+/* site layout */
+
+.wrapper{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.wrapper2{
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* header */
+
+header{
+    background-color: var(--theme-color);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+header .wrapper{
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Main nav */
+
+header nav{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--mobile-nav-color);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+header nav.open{
+    display: flex;
+}
+
+header h1{
+    font-weight: 650;
+    font-size: 1.5rem;
+}
+
+header nav ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+header nav a{
+    font-family: Montserrat, sans-serif;
+    color:white;
+    display:block;
+    font-size: 1rem;
+    line-height: 2;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Hamburger menu */
+.hamburger{
+    position: relative;
+    width: 32px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 150;
+}
+
+.hamburger .bar{
+    --height: 4px;
+    display: block;
+    height: var(--height);
+    width: 100%;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    left:0;
+    transition: 150ms ease-in-out;
+}
+
+.hamburger .bar:first-child{
+    top: 0;
+}
+
+.hamburger .bar:nth-child(2){
+    top: calc(50% - (var(--height) / 2));
+}
+
+.hamburger .bar:nth-child(3){
+    top: calc(100% - var(--height));
+}
+
+/* hamburger animation to "times" */
+
+.hamburger.times .bar:first-child{
+    top: calc(50% - (var(--height) / 2));
+    transform: rotate(45deg);
+}
+.hamburger.times .bar:nth-child(2){
+    top: calc(50% - (var(--height) / 2));
+    opacity: 0;
+}
+.hamburger.times .bar:nth-child(3){
+    top: calc(50% - (var(--height) / 2));
+    transform: rotate(-45deg);
+}
+
+/* main */
+
+main section{
+    padding-top:74px;
+    min-height: 100vh;
+}
+
+main section#home{
+    background-color: #151516;
+    min-height: 920px;
+}
+main section#work{
+    background-color:#DCDCDC;
+    min-height: 920px;
+}
+
+main section#about{
+    background-color:#8B9C7B;
+    min-height: 920px;
+}
+
+main section#contact{
+    background-color:orange
+}
+
+main h2{
+    color: white;
+    font-size: 4rem;
+}
+
+.iframe-container{
+    margin-top: 25px;
+}
+
+/* Contact Form */
+
+.contact-form{
+    max-width: 700px;
+}
+.contact-form label{
+    display: block;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding:4px;
+}
+
+.contact-form p{
+    margin: 16px 0;
+}
+
+.contact-form button{
+    background-color: var(--theme-color);
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 8px;
+    width: 100%;
+}
+/* footer */
+
+footer{
+    background-color: var(--theme-color);
+    color: white;
+}
+
+footer p{
+    margin: 0;
+    text-align: right;
+    font-size: .8rem;
+}
+
+/* media query for desktops */
+
+@media only screen and (min-width: 800px) {
+    
+    header .wrapper{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        gap:0;
+    }
+
+    header .hamburger{
+        display:none;
+    }
+
+    /* Main nav */
+    header nav{
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        display: block;
+    }
+
+    header nav ul{
+        flex-direction: row;
+        justify-content: flex-end;
+        height: auto;
+        gap: 16px;
+    }
+
+    header nav a{
+        display:inline;
+        /* font-size: 1.25rem; */
+        line-height: 1.4;
+    }
+
+    header nav a:hover,
+    header nav a.selected{
+        border-bottom: 3px solid white;
+    } 
+    
+    main section{
+        padding-top:49px;
+    }
+    
+  }
